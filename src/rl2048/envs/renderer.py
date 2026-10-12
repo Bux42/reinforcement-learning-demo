@@ -14,6 +14,7 @@ ACTION_UP, ACTION_RIGHT, ACTION_DOWN, ACTION_LEFT = range(4)
 class TwentyFortyEightRenderer:
     """Shared human and RGB-array renderer with a compact action indicator."""
 
+    AUTO_ACTIONS_PER_SECOND = 2
     BOARD_SIZE = 4
     TILE_SIZE = 100
     GAP = 12
@@ -152,7 +153,7 @@ class TwentyFortyEightRenderer:
                 return False
             if self.auto_play:
                 self._step_requested = False
-                self._clock.tick(10)
+                self._clock.tick(self.AUTO_ACTIONS_PER_SECOND)
                 return True
             if self._step_requested:
                 self._step_requested = False
